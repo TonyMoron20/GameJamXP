@@ -47,9 +47,10 @@ public class DragItem : MonoBehaviour
                 box.Check(_id, _value);
                 box._tagCard = this.gameObject.tag;
                 box._nameObject = this.gameObject.name;
+                _inPosition = true;
             }
 
-            _inPosition = true;
+            
         }
         else if(collision.CompareTag("Accesory") && _id < 0)
         {
@@ -59,9 +60,10 @@ public class DragItem : MonoBehaviour
                 box.Check(_id, _value);
                 box._tagCard = this.gameObject.tag;
                 box._nameAccesory = this.gameObject.name;
+                _inPosition = true;
             }
 
-            _inPosition = true;
+            
         }
         else if(collision.CompareTag("Object") && _id < 0 || collision.CompareTag("Accesory") && _id > 0)
         {

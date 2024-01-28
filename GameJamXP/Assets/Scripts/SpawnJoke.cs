@@ -18,6 +18,8 @@ public class SpawnJoke : MonoBehaviour
 
     private int combo = 0;
 
+    public GameObject explosionPrefab;
+
     private void Start()
     {
         box1 = GameObject.Find("Box1").GetComponent<Box>();
@@ -36,6 +38,8 @@ public class SpawnJoke : MonoBehaviour
             valueT = box1._value + box2._value;
             Debug.Log($"Se spawneo el objeto {valueT}");
             _jokePrefab.ChangeSprite(valueT);
+
+            Instantiate(explosionPrefab, new Vector3(1, -2, 0), Quaternion.identity);
 
             Clean();
             CardsDestroy(box1._nameObject, box2._nameAccesory);

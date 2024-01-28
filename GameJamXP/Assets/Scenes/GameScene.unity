@@ -665,7 +665,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 499, y: 362}
+  m_AnchoredPosition: {x: -290, y: -149}
   m_SizeDelta: {x: -3.447, y: -3.447}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &417025722
@@ -842,7 +842,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d4311f377c74eff4da2f44c93c06bab9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.7
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2317,6 +2317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectJoke: {fileID: 1062192368}
+  explosionPrefab: {fileID: 2395568767063058487, guid: 36b167787fc0a364eaa6b5d2629fd410, type: 3}
 --- !u!1 &1319089389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3357,11 +3358,11 @@ RectTransform:
   - {fileID: 417025721}
   m_Father: {fileID: 1852616645}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!1 &1408581523
 GameObject:
   m_ObjectHideFlags: 0
@@ -3672,7 +3673,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2a6bb244d781576438eb4d921e97f987, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3dea74634b30e8a4596ddca1746e7090, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4653,6 +4654,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1311289554}
         m_TargetAssemblyTypeName: SpawnJoke, Assembly-CSharp
         m_MethodName: CheckBoxes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SpawnExplosion, Assembly-CSharp
+        m_MethodName: Explosion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

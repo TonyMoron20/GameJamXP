@@ -21,6 +21,5 @@ public class ExplosionSpawnObjetos : MonoBehaviour
             animator.SetTrigger("triggerExplosion");
             activarExplosion = false;
         }
-        else{}
     }
 }
