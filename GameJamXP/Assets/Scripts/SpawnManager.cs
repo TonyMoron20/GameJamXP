@@ -19,7 +19,7 @@ public class SpawnManager : MonoBehaviour
         {
             int randomCard = Random.Range(0, _cardPrefab.Length);
             Instantiate(_cardPrefab[randomCard], new Vector3(-6.8f, 3.0f, 0.0f), Quaternion.identity);
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }

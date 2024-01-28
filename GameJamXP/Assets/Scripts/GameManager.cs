@@ -1,15 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
-    public bool _gameOver = true;
-    private UIManager _uiManager;
+    public bool _gameOver = false;
+    private int _score;
+
+    public TMP_Text calificacion;
+    public GameObject resultados;
 
     private void Start()
     {
-        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        _score = 0;
     }
 
     private void Update()
@@ -17,13 +22,29 @@ public class GameManager : MonoBehaviour
         if(_gameOver)
         {
             Time.timeScale = 0.0f;
+            resultados.SetActive(true);
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if(_score > 100)
             {
-                _gameOver = false;
-                Time.timeScale = 1.0f;
-                _uiManager.HideTitleScreen();
+                calificacion.text = "A";
+            }
+            else if(_score > 80 && _score < 100)
+            {
+                calificacion.text = "B";
+            }
+            else if (_score > 60 && _score < 80)
+            {
+                calificacion.text = "C";
+            }
+            else if (_score < 60)
+            {
+                calificacion.text = "F";
             }
         }
+    }
+
+    public void UpdateScore(int puntos)
+    {
+        _score += puntos;
     }
 }

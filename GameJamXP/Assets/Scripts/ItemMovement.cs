@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ItemMovement : MonoBehaviour
 {
-    [SerializeField]
     private float _speed = 4f;
 
     // Update is called once per frame

@@ -14,6 +14,9 @@ public class SpawnJoke : MonoBehaviour
     private Joke _jokePrefab;
 
     private UIManager _uiManager;
+    private GameManager _gameManager;
+
+    private int combo = 0;
 
     private void Start()
     {
@@ -21,6 +24,7 @@ public class SpawnJoke : MonoBehaviour
         box2 = GameObject.Find("Box2").GetComponent<Box>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
         _jokePrefab = GameObject.Find("JokePrefab").GetComponent<Joke>();
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void CheckBoxes()
@@ -36,16 +40,31 @@ public class SpawnJoke : MonoBehaviour
             Clean();
             CardsDestroy(box1._nameObject, box2._nameAccesory);
 
+            Debug.Log($"combo {combo}");
+
             if(box1._tagCard.Equals(_uiManager.objeto) && box2._tagCard.Equals(_uiManager.accesorio))
             {
+                if(combo <= 3)
+                {
+                    combo += 1;
+                }
+                _gameManager.UpdateScore(10 * combo);
                 Debug.Log("10 pts");
             }
             else if (box1._tagCard.Equals(_uiManager.objeto) || box2._tagCard.Equals(_uiManager.accesorio))
             {
+                if(combo == 0)
+                {
+                    combo = 1;
+                } 
+
+                _gameManager.UpdateScore(5 * combo);
                 Debug.Log("5 pts");
             }
             else
             {
+                combo = 0;
+                _gameManager.UpdateScore(0);
                 Debug.Log("0 pts");
             }
         }
@@ -73,54 +92,5 @@ public class SpawnJoke : MonoBehaviour
     {
         Destroy(GameObject.Find(_object));
         Destroy(GameObject.Find(_accesory));
-    }
-
-    private void v1Puntos()
-    {
-        if (box1._tagCard.Equals("Persona"))
-        {
-            if (box2._tagCard.Equals("Varios"))
-            {
-                Debug.Log("10 pts");
-            }
-            else if (box2._tagCard.Equals("Estetico") || box2._tagCard.Equals("Repugnante"))
-            {
-                Debug.Log("5 pts");
-            }
-            else if (box2._tagCard.Equals("Arma"))
-            {
-                Debug.Log("0 pts");
-            }
-        }
-        else if (box1._tagCard.Equals("Animal"))
-        {
-            if (box2._tagCard.Equals("Arma"))
-            {
-                Debug.Log("10 pts");
-            }
-            else if (box2._tagCard.Equals("Varios") || box2._tagCard.Equals("Estetico"))
-            {
-                Debug.Log("5 pts");
-            }
-            else if (box2._tagCard.Equals("Repugnante"))
-            {
-                Debug.Log("0 pts");
-            }
-        }
-        else if (box1._tagCard.Equals("Cosa"))
-        {
-            if (box2._tagCard.Equals("Estetico"))
-            {
-                Debug.Log("10 pts");
-            }
-            else if (box2._tagCard.Equals("Repugnante") || box2._tagCard.Equals("Arma"))
-            {
-                Debug.Log("5 pts");
-            }
-            else if (box2._tagCard.Equals("Varios"))
-            {
-                Debug.Log("0 pts");
-            }
-        }
     }
 }
