@@ -7,7 +7,9 @@ public class Box : MonoBehaviour
     [SerializeField]
     private bool _Fill;
     public int _value;
-    public string tag;
+    public string _tagCard;
+    public string _nameObject;
+    public string _nameAccesory;
 
     public void Check(int id)
     {
@@ -16,7 +18,7 @@ public class Box : MonoBehaviour
     }
 
     public void CleanBox()
-    { 
+    {
         _Fill = false;
         _value = 0;
     }

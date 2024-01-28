@@ -43,7 +43,8 @@ public class DragItem : MonoBehaviour
             if (box != null)
             {
                 box.Check(_id);
-                box.tag = this.gameObject.tag;
+                box._tagCard = this.gameObject.tag;
+                box._nameObject = this.gameObject.name;
             }
 
             _inPosition = true;
@@ -54,7 +55,8 @@ public class DragItem : MonoBehaviour
             if (box != null)
             {
                 box.Check(_id);
-                box.tag = this.gameObject.tag;
+                box._tagCard = this.gameObject.tag;
+                box._nameAccesory = this.gameObject.name;
             }
 
             _inPosition = true;
@@ -65,4 +67,6 @@ public class DragItem : MonoBehaviour
             Destroy(this.gameObject, 1);
         }
     }
+
+
 }

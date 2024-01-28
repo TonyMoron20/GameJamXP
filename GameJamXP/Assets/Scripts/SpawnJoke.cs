@@ -27,6 +27,53 @@ public class SpawnJoke : MonoBehaviour
             Debug.Log($"Se spawneo el objeto {valueT}");
             Instantiate(objectJoke, new Vector3(1, -2, 0), Quaternion.identity);
             Clean();
+            CardsDestroy(box1._nameObject, box2._nameAccesory);
+
+            if(box1._tagCard.Equals("Persona"))
+            {
+                if(box2._tagCard.Equals("Varios"))
+                {
+                    Debug.Log("10 pts");
+                }
+                else if(box2._tagCard.Equals("Estetico") || box2._tagCard.Equals("Repugnante"))
+                {
+                    Debug.Log("5 pts");
+                }
+                else if(box2._tagCard.Equals("Arma"))
+                {
+                    Debug.Log("0 pts");
+                }
+            }
+            else if (box1._tagCard.Equals("Animal"))
+            {
+                if (box2._tagCard.Equals("Arma"))
+                {
+                    Debug.Log("10 pts");
+                }
+                else if (box2._tagCard.Equals("Varios") || box2._tagCard.Equals("Estetico"))
+                {
+                    Debug.Log("5 pts");
+                }
+                else if (box2._tagCard.Equals("Repugnante"))
+                {
+                    Debug.Log("0 pts");
+                }
+            }
+            else if(box1._tagCard.Equals("Cosa"))
+            {
+                if (box2._tagCard.Equals("Estetico"))
+                {
+                    Debug.Log("10 pts");
+                }
+                else if (box2._tagCard.Equals("Repugnante") || box2._tagCard.Equals("Arma"))
+                {
+                    Debug.Log("5 pts");
+                }
+                else if (box2._tagCard.Equals("Varios"))
+                {
+                    Debug.Log("0 pts");
+                }
+            }
         }
         else if(box1._value != 0 && box2._value == 0)
         {
@@ -46,5 +93,11 @@ public class SpawnJoke : MonoBehaviour
     {
         box1.CleanBox();
         box2.CleanBox();
+    }
+
+    public void CardsDestroy(string _object, string _accesory)
+    {
+        Destroy(GameObject.Find(_object));
+        Destroy(GameObject.Find(_accesory));
     }
 }
