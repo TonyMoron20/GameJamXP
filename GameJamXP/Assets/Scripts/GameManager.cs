@@ -5,6 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public bool _gameOver = true;
+    private UIManager _uiManager;
+
+    private void Start()
+    {
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+    }
 
     private void Update()
     {
@@ -16,6 +22,7 @@ public class GameManager : MonoBehaviour
             {
                 _gameOver = false;
                 Time.timeScale = 1.0f;
+                _uiManager.HideTitleScreen();
             }
         }
     }

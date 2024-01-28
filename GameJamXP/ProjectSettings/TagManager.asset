@@ -6,13 +6,13 @@ TagManager:
   tags:
   - Object
   - Accesory
-  - Persona
-  - Animal
-  - Cosa
-  - Estetico
-  - Repugnante
-  - Arma
-  - Varios
+  - Animales
+  - Muebles
+  - Personas
+  - Accesorios
+  - Asquerosidades
+  - Situaciones incovenientes
+  - Armas
   layers:
   - Default
   - TransparentFX

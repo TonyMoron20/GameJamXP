@@ -11,10 +11,13 @@ public class SpawnJoke : MonoBehaviour
     [SerializeField]
     private GameObject objectJoke;
 
+    private UIManager _uiManager;
+
     private void Start()
     {
         box1 = GameObject.Find("Box1").GetComponent<Box>();
         box2 = GameObject.Find("Box2").GetComponent<Box>();
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
     }
 
     public void CheckBoxes()
@@ -29,50 +32,17 @@ public class SpawnJoke : MonoBehaviour
             Clean();
             CardsDestroy(box1._nameObject, box2._nameAccesory);
 
-            if(box1._tagCard.Equals("Persona"))
+            if(box1._tagCard.Equals(_uiManager.objeto) && box2._tagCard.Equals(_uiManager.accesorio))
             {
-                if(box2._tagCard.Equals("Varios"))
-                {
-                    Debug.Log("10 pts");
-                }
-                else if(box2._tagCard.Equals("Estetico") || box2._tagCard.Equals("Repugnante"))
-                {
-                    Debug.Log("5 pts");
-                }
-                else if(box2._tagCard.Equals("Arma"))
-                {
-                    Debug.Log("0 pts");
-                }
+                Debug.Log("10 pts");
             }
-            else if (box1._tagCard.Equals("Animal"))
+            else if (box1._tagCard.Equals(_uiManager.objeto) || box2._tagCard.Equals(_uiManager.accesorio))
             {
-                if (box2._tagCard.Equals("Arma"))
-                {
-                    Debug.Log("10 pts");
-                }
-                else if (box2._tagCard.Equals("Varios") || box2._tagCard.Equals("Estetico"))
-                {
-                    Debug.Log("5 pts");
-                }
-                else if (box2._tagCard.Equals("Repugnante"))
-                {
-                    Debug.Log("0 pts");
-                }
+                Debug.Log("5 pts");
             }
-            else if(box1._tagCard.Equals("Cosa"))
+            else
             {
-                if (box2._tagCard.Equals("Estetico"))
-                {
-                    Debug.Log("10 pts");
-                }
-                else if (box2._tagCard.Equals("Repugnante") || box2._tagCard.Equals("Arma"))
-                {
-                    Debug.Log("5 pts");
-                }
-                else if (box2._tagCard.Equals("Varios"))
-                {
-                    Debug.Log("0 pts");
-                }
+                Debug.Log("0 pts");
             }
         }
         else if(box1._value != 0 && box2._value == 0)
@@ -99,5 +69,54 @@ public class SpawnJoke : MonoBehaviour
     {
         Destroy(GameObject.Find(_object));
         Destroy(GameObject.Find(_accesory));
+    }
+
+    private void v1Puntos()
+    {
+        if (box1._tagCard.Equals("Persona"))
+        {
+            if (box2._tagCard.Equals("Varios"))
+            {
+                Debug.Log("10 pts");
+            }
+            else if (box2._tagCard.Equals("Estetico") || box2._tagCard.Equals("Repugnante"))
+            {
+                Debug.Log("5 pts");
+            }
+            else if (box2._tagCard.Equals("Arma"))
+            {
+                Debug.Log("0 pts");
+            }
+        }
+        else if (box1._tagCard.Equals("Animal"))
+        {
+            if (box2._tagCard.Equals("Arma"))
+            {
+                Debug.Log("10 pts");
+            }
+            else if (box2._tagCard.Equals("Varios") || box2._tagCard.Equals("Estetico"))
+            {
+                Debug.Log("5 pts");
+            }
+            else if (box2._tagCard.Equals("Repugnante"))
+            {
+                Debug.Log("0 pts");
+            }
+        }
+        else if (box1._tagCard.Equals("Cosa"))
+        {
+            if (box2._tagCard.Equals("Estetico"))
+            {
+                Debug.Log("10 pts");
+            }
+            else if (box2._tagCard.Equals("Repugnante") || box2._tagCard.Equals("Arma"))
+            {
+                Debug.Log("5 pts");
+            }
+            else if (box2._tagCard.Equals("Varios"))
+            {
+                Debug.Log("0 pts");
+            }
+        }
     }
 }
