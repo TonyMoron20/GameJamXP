@@ -9,7 +9,9 @@ public class SpawnJoke : MonoBehaviour
     private Box box2;
 
     [SerializeField]
-    private GameObject objectJoke;
+    private GameObject _objectJoke;
+
+    private Joke _jokePrefab;
 
     private UIManager _uiManager;
 
@@ -18,17 +20,19 @@ public class SpawnJoke : MonoBehaviour
         box1 = GameObject.Find("Box1").GetComponent<Box>();
         box2 = GameObject.Find("Box2").GetComponent<Box>();
         _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        _jokePrefab = GameObject.Find("JokePrefab").GetComponent<Joke>();
     }
 
     public void CheckBoxes()
     {
         int valueT = 0;
 
-        if (box1._value != 0 && box2._value != 0)
+        if (box1._id != 0 && box2._id != 0)
         {
             valueT = box1._value + box2._value;
             Debug.Log($"Se spawneo el objeto {valueT}");
-            Instantiate(objectJoke, new Vector3(1, -2, 0), Quaternion.identity);
+            _jokePrefab.ChangeSprite(valueT);
+
             Clean();
             CardsDestroy(box1._nameObject, box2._nameAccesory);
 
@@ -45,11 +49,11 @@ public class SpawnJoke : MonoBehaviour
                 Debug.Log("0 pts");
             }
         }
-        else if(box1._value != 0 && box2._value == 0)
+        else if(box1._id != 0 && box2._id == 0)
         {
             Debug.Log("Te hace falta colocar un accesorio");
         }
-        else if (box1._value == 0 && box2._value != 0)
+        else if (box1._id == 0 && box2._id != 0)
         {
             Debug.Log("Te hace falta colocar un objeto");
         }

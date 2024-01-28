@@ -6,6 +6,8 @@ public class DragItem : MonoBehaviour
 {
     [SerializeField]
     private int _id;
+    [SerializeField]
+    private int _value;
     private bool _drag;
     private bool _inPosition = false;
 
@@ -42,7 +44,7 @@ public class DragItem : MonoBehaviour
 
             if (box != null)
             {
-                box.Check(_id);
+                box.Check(_id, _value);
                 box._tagCard = this.gameObject.tag;
                 box._nameObject = this.gameObject.name;
             }
@@ -54,7 +56,7 @@ public class DragItem : MonoBehaviour
             Debug.Log("Bien accesorio colocado");
             if (box != null)
             {
-                box.Check(_id);
+                box.Check(_id, _value);
                 box._tagCard = this.gameObject.tag;
                 box._nameAccesory = this.gameObject.name;
             }

@@ -6,20 +6,22 @@ public class Box : MonoBehaviour
 {
     [SerializeField]
     private bool _Fill;
+    public int _id;
     public int _value;
     public string _tagCard;
     public string _nameObject;
     public string _nameAccesory;
 
-    public void Check(int id)
+    public void Check(int id, int value)
     {
         _Fill = true;
-        _value = id;
+        _id = id;
+        _value = value;
     }
 
     public void CleanBox()
     {
         _Fill = false;
-        _value = 0;
+        _id = 0;
     }
 }
