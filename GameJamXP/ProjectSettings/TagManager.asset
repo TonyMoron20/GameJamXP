@@ -6,6 +6,13 @@ TagManager:
   tags:
   - Object
   - Accesory
+  - Persona
+  - Animal
+  - Cosa
+  - Estetico
+  - Repugnante
+  - Arma
+  - Varios
   layers:
   - Default
   - TransparentFX

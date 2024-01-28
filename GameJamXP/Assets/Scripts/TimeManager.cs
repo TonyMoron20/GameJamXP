@@ -13,8 +13,11 @@ public class TimeManager : MonoBehaviour
     [SerializeField]
     private Slider _slider;
 
+    private GameManager _gameManager;
+
     private void Start()
     {
+        _gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         TimerOn();
     }
 
@@ -38,6 +41,7 @@ public class TimeManager : MonoBehaviour
         if (_currentTime <= 0)
         {
             Debug.Log("Se acabo el tiempo");
+            _gameManager._gameOver = true;
             _activeTime = false;
             ChangeTimer(false);
         }

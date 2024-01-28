@@ -26,10 +26,7 @@ public class SpawnJoke : MonoBehaviour
             valueT = box1._value + box2._value;
             Debug.Log($"Se spawneo el objeto {valueT}");
             Instantiate(objectJoke, new Vector3(1, -2, 0), Quaternion.identity);
-
-
-
-
+            Clean();
         }
         else if(box1._value != 0 && box2._value == 0)
         {

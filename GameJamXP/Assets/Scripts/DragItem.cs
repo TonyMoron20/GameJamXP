@@ -34,15 +34,16 @@ public class DragItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Box box = collision.GetComponent<Box>();
+
         if(collision.CompareTag("Object") && _id > 0)
         {
             Debug.Log("Bien Objeto colocado");
 
-            Box box = collision.GetComponent<Box>();
-
             if (box != null)
             {
                 box.Check(_id);
+                box.tag = this.gameObject.tag;
             }
 
             _inPosition = true;
@@ -50,10 +51,10 @@ public class DragItem : MonoBehaviour
         else if(collision.CompareTag("Accesory") && _id < 0)
         {
             Debug.Log("Bien accesorio colocado");
-            Box box = collision.GetComponent<Box>();
             if (box != null)
             {
                 box.Check(_id);
+                box.tag = this.gameObject.tag;
             }
 
             _inPosition = true;

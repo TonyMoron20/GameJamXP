@@ -7,6 +7,7 @@ public class Box : MonoBehaviour
     [SerializeField]
     private bool _Fill;
     public int _value;
+    public string tag;
 
     public void Check(int id)
     {
